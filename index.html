@@ -146,7 +146,7 @@ footer{color:var(--mute);font-size:14px;padding-bottom:30px}
 
 <div class="bar"><div class="wrap">
  <span class="saved" id="saved" aria-live="polite">Зберігається автоматично в цьому браузері</span>
- <div class="menu" id="dlMenu" hidden><button class="main" id="dlBtn" aria-expanded="false">Завантажити</button><div>
+ <div class="menu" id="dlMenu"><button class="main" id="dlBtn" aria-expanded="false">Завантажити</button><div>
   <button id="dlCh">Цей розділ (файл, можна зберегти як PDF)</button>
   <button id="dlAll">Увесь зошит (файл, можна зберегти як PDF)</button>
   <button id="dlMd">Цей розділ як текст (.md)</button>
@@ -421,8 +421,9 @@ function asHtml(list){const name=S.name||'';const body=list.map(c=>[c,chBlocks(c
 function asMd(c){return '# '+chTitle(c)+' (с. '+c.pp+')\n'+(S.name?S.name+'\n':'')+'\n'+chBlocks(c).map(([t,it])=>'## '+t+'\n\n'+it.map(([l,v])=>'**'+l+'**\n'+v+'\n').join('\n')).join('\n')}
 const fn=(x,ext)=>'Вооґлайд_'+x+(S.name?'_'+S.name.trim().replace(/\s+/g,'_'):'')+'.'+ext;
 let dl=null;
-window.claude&&claude.use('downloads').then(n=>{dl=n;if(n)$('#dlMenu').hidden=false}).catch(()=>{});
-async function doSave(name,data){$('#dlMenu').classList.remove('on');try{await dl.save({filename:name,data});toast('Файл збережено')}catch(e){if(e&&e.code==='declined')return;toast(e&&e.code==='rate_limited'?'Зачекай мить і спробуй ще раз':'Завантажити не вдалося. Скористайся кнопкою «Скопіювати розділ».')}}
+window.claude&&claude.use('downloads').then(n=>{dl=n}).catch(()=>{});
+function plainSave(name,data){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([data],{type:/\.md$/.test(name)?'text/markdown;charset=utf-8':'text/html;charset=utf-8'}));a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500);toast('Файл завантажено. Якщо він не з\'явився, скористайся «Ще… → Скопіювати розділ як текст».')}
+async function doSave(name,data){$('#dlMenu').classList.remove('on');if(!dl){try{plainSave(name,data)}catch(e){toast('Завантажити не вдалося. Скористайся «Ще… → Скопіювати розділ як текст».')}return}try{await dl.save({filename:name,data});toast('Файл збережено')}catch(e){if(e&&e.code==='declined')return;toast(e&&e.code==='rate_limited'?'Зачекай мить і спробуй ще раз':'Завантажити не вдалося. Скористайся кнопкою «Скопіювати розділ».')}}
 $('#moreBtn').onclick=()=>{const m=$('#more');m.classList.toggle('on');$('#moreBtn').setAttribute('aria-expanded',m.classList.contains('on'))};
 $('#dlBtn').onclick=()=>{const m=$('#dlMenu');m.classList.toggle('on');$('#dlBtn').setAttribute('aria-expanded',m.classList.contains('on'))};
 $('#dlCh').onclick=()=>doSave(fn(cur.n==='✦'?'Висновки':'розділ_'+cur.n,'html'),asHtml([cur]));
