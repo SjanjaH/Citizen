@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Мислити як громадянин · зошит</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;700;800&family=Raleway:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+/* VOICE: тихий, уважний робочий зошит для повільного читання
+   IDEA: зошит із закладками на розділи книги — питання автора стають твоїми
+   PICTURE: піраміда з п'яти точок зору (рис. 0.3.1), закладки-вкладки як корінці
+   COLOUR and TYPE: бірюза #02b9b5 як поле, помаранч #f18602 як акцент; Exo 2 + Raleway
+   LAYOUT: шапка з вкладками, одна колонка зошита, панель збереження внизу */
+:root{color-scheme:light dark;
+--bg:light-dark(#ffffff,#0d2a2a);--ink:light-dark(#17302f,#e8f6f5);--mute:light-dark(#587170,#9cc3c1);
+--teal:#02b9b5;--tealD:light-dark(#007f7c,#3fd6d2);--or:#f18602;--orD:light-dark(#b85f00,#ffab4a);
+--card:light-dark(#f2fbfb,#123838);--line:light-dark(#cfeceb,#22504f);--field:light-dark(#ffffff,#0a2222)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.6 Raleway,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:"Exo 2",sans-serif;line-height:1.1;text-wrap:balance;margin:0}
+.band{padding:clamp(24px,4vw,52px) max(5vw,16px)}
+.wrap{max-width:860px;margin:0 auto}
+.top{background:var(--teal);color:#06302f;padding-bottom:0}
+.top .wrap{display:grid;gap:16px}
+.kick{font-weight:600;font-size:15px;opacity:.85}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800}
+.intro{margin:0;max-width:68ch;font-size:16px}
+.who{display:flex;flex-wrap:wrap;gap:12px;align-items:end}
+.who label{font-size:14px;font-weight:600;display:grid;gap:4px;flex:1 1 240px}
+.who input{background:#fff;color:#17302f;border-color:transparent}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding:4px 0 0;scrollbar-width:thin}
+.tabs a{flex:none;display:grid;gap:2px;text-decoration:none;color:#06302f;background:rgba(255,255,255,.35);border-radius:12px 12px 0 0;padding:9px 14px 8px;min-width:64px;font-size:14px;font-weight:600;line-height:1.2}
+.tabs a b{font:800 18px "Exo 2",sans-serif}
+.tabs a i{display:block;height:4px;border-radius:4px;background:rgba(6,48,47,.15);overflow:hidden}
+.tabs a i s{display:block;height:100%;background:var(--or)}
+.tabs a[aria-current=page]{background:var(--bg);color:var(--ink)}
+.chead{background:var(--bg);padding-bottom:8px}
+.chead h2{font-size:clamp(28px,4.4vw,42px);color:var(--tealD)}
+.meta{display:flex;flex-wrap:wrap;gap:10px 20px;align-items:center;margin-top:10px;color:var(--mute);font-size:15px}
+.meter{flex:1 1 160px;height:8px;background:var(--line);border-radius:8px;overflow:hidden;max-width:260px}
+.meter i{display:block;height:100%;width:0;background:var(--or);transition:width .4s}
+.toc{margin:14px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
+.toc li{font-size:14px;background:var(--card);border-radius:16px;padding:4px 12px}
+.toc li span{color:var(--mute)}
+.lead{color:var(--mute);margin:10px 0 18px;max-width:66ch}
+.note{font-size:14px;color:var(--mute);border-left:4px solid var(--teal);padding:4px 12px;margin-top:14px}
+section.step{border-top:1px solid var(--line)}
+.step h3.h{font-size:clamp(22px,3.2vw,30px);color:var(--tealD);display:flex;gap:14px;align-items:baseline}
+.step h3.h b{font-size:.62em;background:var(--or);color:#fff;border-radius:50%;width:1.9em;height:1.9em;display:inline-grid;place-items:center;flex:none}
+.src{font-size:14px;color:var(--mute)}
+label.f{display:grid;gap:6px;margin:14px 0;font-weight:600}
+label.f span{font-weight:400;color:var(--mute);font-size:14px}
+textarea,input[type=text]{width:100%;font:16px/1.5 Raleway,sans-serif;color:var(--ink);background:var(--field);border:1.5px solid var(--line);border-radius:12px;padding:11px 13px}
+textarea{min-height:88px;resize:vertical}
+select{width:100%;min-height:44px;font:16px Raleway,sans-serif;color:var(--ink);background:var(--field);border:1.5px solid var(--line);border-radius:12px;padding:8px 10px}
+textarea:focus,input:focus,button:focus-visible,a:focus-visible{outline:3px solid var(--or);outline-offset:1px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.box{background:var(--card);border-radius:16px;padding:14px 16px}
+.box h4{font:700 18px "Exo 2",sans-serif;margin:0;color:var(--tealD)}
+.box label.f{margin:8px 0 0}
+.sugg{display:grid;gap:8px;margin-bottom:16px}
+.sg{display:flex;gap:12px;align-items:flex-start;background:var(--card);border-radius:14px;padding:10px 12px}
+.sg blockquote{margin:0;font-style:italic;flex:1}
+.sg small{display:block;color:var(--mute);font-style:normal;font-size:13px}
+.sg button{flex:none;min-height:40px;padding:0 12px;font-size:14px}
+.sg.used{opacity:.55}
+.row{background:var(--card);border-radius:16px;padding:12px 14px;margin-bottom:10px;display:grid;gap:8px;position:relative}
+.row .two{display:grid;grid-template-columns:minmax(0,1fr) 92px;gap:8px}
+.row .three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.row label{display:grid;gap:4px;font-size:14px;font-weight:600}
+.row textarea{min-height:64px}
+.del{justify-self:end;min-height:36px;padding:0 12px;font-size:13px;border-color:var(--line);color:var(--mute)}
+.add{border-style:dashed;width:100%}
+.scale{display:grid;grid-template-columns:auto minmax(0,1fr) auto 36px;gap:12px;align-items:center;font-weight:600;font-size:15px;margin:6px 0}
+.scale output{font:800 24px "Exo 2",sans-serif;color:var(--orD);text-align:right}
+input[type=range]{width:100%;accent-color:var(--or);height:44px}
+.pair{background:var(--card);border-radius:14px;padding:12px 14px;margin-bottom:10px}
+.pair .t{font-weight:600;margin-bottom:8px}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg label{cursor:pointer;position:relative}
+.seg input{position:absolute;opacity:0}
+.seg span{display:inline-block;min-height:40px;padding:8px 14px;border-radius:20px;border:1.5px solid var(--line);font-size:14px;background:var(--field)}
+.seg input:checked+span{background:var(--teal);border-color:var(--teal);color:#06302f;font-weight:600}
+.seg input:focus-visible+span{outline:3px solid var(--or)}
+details{margin-top:8px;font-size:14px;color:var(--mute)}
+summary{cursor:pointer;color:var(--tealD);font-weight:600}
+.pair textarea{min-height:56px;margin-top:8px}
+.chk{display:flex;gap:10px;align-items:flex-start;padding:8px 0;cursor:pointer}
+.chk input{width:22px;height:22px;accent-color:var(--or);flex:none;margin-top:3px}
+.verdict{border-left:5px solid var(--or);background:var(--card);border-radius:0 12px 12px 0;padding:12px 16px;margin:10px 0 4px;font-weight:600}
+.ab{display:grid;grid-template-columns:minmax(0,1fr) 46px minmax(0,1fr);gap:8px}
+.ab .arr{display:grid;place-items:center;font:800 26px "Exo 2",sans-serif;color:var(--orD)}
+.vp{display:grid;grid-template-columns:170px minmax(0,1fr);gap:8px 12px;margin-bottom:8px}
+.vp input{font-weight:600}
+.pyr{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-bottom:12px}
+.pyr figure{margin:0;background:var(--card);border-radius:14px;padding:10px 6px 8px;text-align:center}
+.pyr svg{width:100%;height:auto;max-height:84px}
+.pyr svg *{stroke:var(--tealD)}
+.pyr figcaption{font-size:13px;font-weight:600}
+.crit{display:grid;gap:8px}
+.crit .c{background:var(--card);border-radius:14px;padding:10px 14px;display:grid;gap:8px}
+.tally{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.tally span{background:var(--card);border-radius:18px;padding:6px 14px;font-weight:600}
+.tally b{font:800 20px "Exo 2",sans-serif;color:var(--orD);margin-right:4px}
+.rw{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;align-items:center;margin-bottom:8px}
+.rw q{font-style:italic;background:var(--card);border-radius:12px;padding:10px 12px}
+.bar{position:sticky;bottom:0;background:var(--bg);border-top:2px solid var(--teal);padding:10px max(5vw,16px);z-index:5}
+.bar .wrap{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.saved{font-size:13px;color:var(--mute);margin-right:auto}
+button{font:600 15px Raleway,sans-serif;min-height:44px;padding:0 16px;border-radius:22px;border:1.5px solid var(--teal);background:var(--field);color:var(--ink);cursor:pointer}
+button.main{background:var(--or);border-color:var(--or);color:#fff}
+.menu{position:relative}
+.menu>div{position:absolute;bottom:52px;right:0;background:var(--bg);border:1.5px solid var(--line);border-radius:14px;padding:8px;display:none;gap:6px;min-width:250px;box-shadow:0 8px 24px rgba(0,0,0,.15)}
+.menu.on>div{display:grid}
+.menu>div button{text-align:left;border-color:transparent}
+.dlg{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;place-items:center;z-index:9;padding:16px}
+.dlg.on{display:grid}
+.dlg>div{background:var(--bg);border-radius:18px;padding:22px;max-width:420px;display:grid;gap:14px}
+.toast{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:20px;font-size:14px;opacity:0;transition:opacity .3s;pointer-events:none;max-width:90vw;z-index:10}
+.toast.on{opacity:1}
+footer{color:var(--mute);font-size:14px;padding-bottom:30px}
+.bird{width:26px;height:26px;opacity:.35;cursor:pointer;vertical-align:middle;border:0;background:none;padding:0;min-height:0}
+.bird:hover{opacity:1}
+[hidden]{display:none!important}
+@media(max-width:600px){.saved{flex-basis:100%;font-size:12px}.menu>div{position:fixed;left:12px;right:12px;bottom:76px;min-width:0}.grid2,.ab,.vp,.rw,.row .three{grid-template-columns:minmax(0,1fr)}.ab .arr{transform:rotate(90deg);height:30px}.pyr{gap:5px}.pyr figcaption{font-size:11px}.scale{grid-template-columns:minmax(0,1fr) auto}.scale input{grid-column:1/-1}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="band top">
+ <div class="wrap">
+  <div class="kick">Спільночитання · Юло Вооґлайд, «Мислити як громадянин»</div>
+  <h1>Мій зошит громадянина</h1>
+  <p class="intro">Це твій особистий зошит до спільночитання. Тут можна записувати власні думки, цитати й відповіді на вправи до кожного розділу. Усе, що ти пишеш, зберігається лише в цьому браузері на цьому пристрої, і ніхто інший цього не бачить. Кнопка «Завантажити» внизу збереже розділ або весь зошит у файл. Цей файл можна передати групі для обговорення або відкрити й зберегти у форматі PDF. Якщо пишеш на кількох пристроях або чистиш браузер, час від часу завантажуй зошит, щоб нічого не втратити.</p>
+  <div class="who"><label>Моє ім'я <input type="text" id="name" autocomplete="name"></label></div>
+  <nav class="tabs" id="tabs" aria-label="Розділи книги"></nav>
+ </div>
+</header>
+
+<main id="panels"></main>
+
+<footer class="band"><div class="wrap">Зошит до книги Юло Вооґлайда «Мислити як громадянин» (Фонд «Ідейна спадщина Юло Вооґлайда»). Цитати подано за українським виданням зі сторінками. Розробка: learnlab.digital · лабораторія досвіду <button class="bird" id="bird" aria-label="Пташка"><svg viewBox="0 0 32 32"><path d="M4 20c6 0 8-6 14-8 3-1 6 0 8 2l3-1-2 3c0 6-6 10-13 10-4 0-8-2-10-6z" fill="#f18602"/><circle cx="22" cy="14" r="1.3" fill="#17302f"/></svg></button></div></footer>
+
+<div class="bar"><div class="wrap">
+ <span class="saved" id="saved" aria-live="polite">Зберігається автоматично в цьому браузері</span>
+ <div class="menu" id="dlMenu" hidden><button class="main" id="dlBtn" aria-expanded="false">Завантажити</button><div>
+  <button id="dlCh">Цей розділ (файл, можна зберегти як PDF)</button>
+  <button id="dlAll">Увесь зошит (файл, можна зберегти як PDF)</button>
+  <button id="dlMd">Цей розділ як текст (.md)</button>
+ </div></div>
+ <div class="menu" id="more"><button id="moreBtn" aria-expanded="false">Ще…</button><div>
+  <button id="copy">Скопіювати розділ як текст</button>
+  <button id="openFile">Відкрити збережений файл</button>
+  <button id="clear">Очистити цей розділ</button>
+ </div></div>
+ <input type="file" id="file" accept=".html,.json" hidden>
+</div></div>
+
+<div class="dlg" id="dlg" role="dialog" aria-modal="true" aria-labelledby="dlgT"><div>
+ <h3 id="dlgT">Очистити відповіді в цьому розділі?</h3>
+ <p style="margin:0">Інші розділи залишаться. Перед очищенням краще завантаж зошит.</p>
+ <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="main" id="yes">Так, очистити</button><button id="no">Скасувати</button></div>
+</div></div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+{
+const KEY='vooglaid-zoshyt';
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let S={};try{S=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){}
+/* перенесення з першої версії аркуша */
+try{const old=JSON.parse(localStorage.getItem('vooglaid-arkush-00'));if(old&&!S._migrated){Object.entries(old).forEach(([k,v])=>{if(k==='name'){if(!S.name)S.name=v}else if(k==='quotes'){if(v.length&&!S.c0__quotes)S.c0__quotes=v.map(t=>({t}))}else if(k==='q_own'){if(v)(S.c0__quotes=S.c0__quotes||[]).push({t:v})}else if(k!=='date'&&S['c0_'+k]===undefined)S['c0_'+k]=v});S._migrated=1}}catch(e){}
+
+if(!S.c2__kn&&[0,1,2].some(i=>S['c2_kn'+i]||S['c2_knt'+i]||S['c2_knb'+i])){S.c2__kn=[0,1,2].filter(i=>S['c2_kn'+i]||S['c2_knt'+i]||S['c2_knb'+i]).map(i=>({a:S['c2_kn'+i]||'',t:S['c2_knt'+i]||'',b:S['c2_knb'+i]||''}));[0,1,2].forEach(i=>{delete S['c2_kn'+i];delete S['c2_knt'+i];delete S['c2_knb'+i]})}
+/* ---------- будівельні блоки ---------- */
+let P='';
+const T=(k,l,h='',r)=>`<label class="f">${l}${h?`<span>${h}</span>`:''}<textarea data-k="${P}${k}" data-label="${esc(l)}"${r?` rows="${r}"`:''}>${esc(S[P+k])}</textarea></label>`;
+const IN=(k,l)=>`<label class="f">${l}<input type="text" data-k="${P}${k}" data-label="${esc(l)}" value="${esc(S[P+k])}"></label>`;
+const BOX=(h,inner)=>`<div class="box"><h4>${h}</h4>${inner}</div>`;
+const SEG=(k,label,opts)=>`<div class="seg" role="radiogroup" aria-label="${esc(label)}" data-seg="${P}${k}" data-label="${esc(label)}">${opts.map(v=>`<label><input type="radio" name="${P}${k}" value="${v}"${S[P+k]===v?' checked':''}><span>${v}</span></label>`).join('')}</div>`;
+const SET=(k,label,items)=>`<div data-set="${P}${k}" data-label="${esc(label)}">${items.map(([v,h])=>`<label class="chk"><input type="checkbox" value="${esc(v)}"${(S[P+k]||[]).includes(v)?' checked':''}><span>${h||v}</span></label>`).join('')}</div>`;
+const RANGE=(k,l,a,b)=>`<div class="scale"><span>${a}</span><input type="range" min="1" max="10" value="${S[P+k]||5}" data-k="${P}${k}" data-label="${esc(l)}" aria-label="${esc(l)}"><span>${b}</span><output>${S[P+k]||'–'}</output></div>`;
+const LIST=(k,label,fields,add,lay)=>`<div data-listwrap="${P}${k}" data-label="${esc(label)}" data-fields='${JSON.stringify(fields)}' data-lay="${lay||''}" data-addtxt="${esc(add)}"></div>`;
+const SEC=(t,inner,lead='')=>({t,inner,lead});
+
+/* ---------- спільні секції ---------- */
+const QUOTES=(sugg=[])=>SEC('Мої цитати',`
+ ${sugg.length?`<p class="src" style="margin:0 0 8px">Можна почати з цих думок, натиснувши «До моїх», або одразу записати свою.</p><div class="sugg">${sugg.map(([q,p])=>`<div class="sg" data-q="${esc(q)}"><blockquote>«${esc(q)}»<small>с. ${p}</small></blockquote><button type="button" data-addq="${esc(q)}" data-p="${p}">+ До моїх</button></div>`).join('')}</div>`:''}
+ ${LIST('_quotes','Мої цитати',[['t','Цитата','ta'],['p','Сторінка','in'],['n','Що я про це думаю, де бачу в житті','ta']],'+ Додати цитату','quote')}
+ ${T('disagree','З чим я не згоден(-на) або що хочу оскаржити','Автор каже, що його «мусить» — не приписи, а запрошення до думання.')}`,
+ 'Записуй стільки цитат, скільки хочеш. Біля кожної є місце для твоєї думки та номер сторінки, щоб на зустрічі швидко знайти це місце.');
+const TERMS=()=>SEC('Мій словник розділу',LIST('_terms','Мій словник',[['a','Поняття','in'],['b','Як я його розумію своїми словами','ta']],'+ Додати поняття','two'),'Вооґлайд вважає, що без точних понять громадянська розмова неможлива. Запиши поняття, які в розділі виявилися новими або вжитими інакше, ніж ти звик(-ла).');
+const INSIGHT=()=>SEC('Що відкрилося',`${T('main','Головна думка розділу моїми словами')}${T('new','Що для мене нове або несподіване')}
+ <div class="grid2">${BOX('Впізнаю в Україні',T('ua_same',''))}${BOX('У нас інакше',T('ua_diff',''))}</div>`);
+const MEET=()=>SEC('Беру на зустріч',`${T('m_q','Моє питання до групи')}${T('m_idea','Одна думка, якою хочу поділитися')}${T('m_step','Мій маленький крок до наступної зустрічі','Наприклад: одна розмова, одне спостереження, одне поняття, яке уточню')}`);
+
+/* ---------- розділи ---------- */
+const CH=[
+{id:'r0',n:'0',t:'Вступ',sub:'як дивитися, щоб побачити ціле',pp:'9–24',toc:[['Звернення автора до українського читача',9],['Від перекладачки',11],['Від автора',13],['Про структуру книги',16],['Основи тлумачення',17],['Додаткові завваги',23]],
+ build:()=>[
+ SEC('Точка входу',`${T('cit_def','Громадянин, на мою думку, це людина, яка…')}
+  <p style="font-weight:600;margin:18px 0 0">Де я зараз: між «мешканцем» і «громадянином»</p>
+  <p class="src" style="margin:0">У книзі «мешканець» означає того, хто просто живе в країні, а «громадянин» — того, хто мислить самостійно й поділяє відповідальність.</p>
+  ${RANGE('scale','Шкала мешканець → громадянин (1–10)','мешканець','громадянин')}
+  ${T('scale_why','Чому саме тут? Що мені вже вдається, а чого бракує?')}`,'Запиши, з чим ти береш цю книгу. Наприкінці читання ми повернемося до цих відповідей і порівняємо.'),
+ QUOTES([['Почуття відповідальності формується через самостійні рішення.',15],['Уряд неспроможний зберегти суспільство чи культуру, зробити це може лише сам народ…',13],['Якщо співпраця переростає в так звану «допомогу», це може призвести до формування небезпечної й поглиблюваної залежності…',14],['Насправді порозумнішає лише той, хто є достатньо критичним, точним, послідовним, самостійним і вільним.',15],['Єдиного правильного погляду чи ракурсу не існує!',18],['Проблему неможливо вирішити саму по собі.',21],['Якщо мова заплутана, співрозмовники не можуть зрозуміти одне одного, а люди не здатні діяти як громадяни.',24]]),
+ SEC('Слова, які я змішую',PAIRS.map((p,i)=>`<div class="pair"><div class="t">${p[0]} ↔ ${p[1]}</div>${SEG('pr'+i,p[0]+' ↔ '+p[1],['розрізняю','сумніваюся','досі змішую'])}<textarea data-k="${P}prn${i}" data-label="${esc(p[0]+' ↔ '+p[1])}: моє розрізнення" placeholder="Різниця, як я її розумію…">${esc(S[P+'prn'+i])}</textarea>${p[2]?`<details><summary>Підказка з книги</summary>${p[2]}</details>`:''}</div>`).join(''),'Чесно познач, які пари ти розрізняєш, а які зливаються. Для сумнівних спробуй сформулювати різницю.'),
+ SEC("Піраміда з п'яти точок зору",`${PYR}${IN('obj','Явище, яке я розглядаю')}
+  ${VPS.map((v,i)=>`<div class="vp"><input type="text" data-k="${P}vpl${i}" value="${esc(S[P+'vpl'+i]??v)}" aria-label="Назва позиції ${i+1}"><textarea data-k="${P}vp${i}" data-label="Позиція ${i+1}" style="min-height:60px">${esc(S[P+'vp'+i])}</textarea></div>`).join('')}
+  <div class="grid2" style="margin-top:14px">${BOX('Від чого воно залежить',T('dep_from',''))}${BOX('Що залежить від нього',T('dep_to',''))}</div>
+  ${T('vp_insight','Що я побачив(-ла), чого не видно з однієї позиції?')}`,'Обери явище зі свого життя чи громади: зміну в місті, правило в організації, суперечку в сім\'ї, рішення школи. Подивися на нього з різних позицій. Назви позицій можна змінити.'),
+ SEC('Проблема чи скарга?',`<div class="ab">${BOX('А · нинішній стан',T('stateA','','Як є насправді, з фактами'))}<div class="arr" aria-hidden="true">→</div>${BOX('В · бажаний стан',T('stateB','','Як має бути і чому'))}</div>
+  <p style="font-weight:600;margin:18px 0 0">Три передумови, щоб побачити проблему</p>
+  ${SET('pre','Передумови, які маю',[['знання про нинішній стан','Я <b>знаю</b> нинішній стан, а не тільки маю враження про нього'],['уявлення про бажаний стан','У мене є чітке <b>уявлення</b>, як має бути'],['небайдужість','Мені <b>не байдуже</b>, я готовий(-а) щось із цим робити']])}
+  <div class="verdict" data-verdict></div>
+  ${T('causes','Причини: чому склався стан А?','Автор нагадує, що недоліки не змінити напряму. Змінюють їхні причини, підсилюють слабке й додають те, чого бракує.')}
+  <p style="font-weight:600;margin:14px 0 0">Що треба змінити, щоб перейти з А у В?</p>
+  ${SET('change','Що змінювати',[['склад','склад (хто і що бере участь)'],['структуру',"структуру (як частини пов'язані між собою)"],['мету'],['принципи діяльності'],['критерії оцінки','основи (критерії) оцінки']])}`,'У книзі проблема — це усвідомлене протиріччя між нинішнім і бажаним станом. Вона існує тільки у свідомості людей. Візьми щось, що тебе турбує, і перевір, чи це вже проблема.'),
+ SEC('Чотири вихідні точки',`<div class="grid2">${BOX('Добре: зберегти й захистити',T('p_keep',''))}${BOX('Погане: які причини змінювати',T('p_bad',''))}${BOX('Чого бракує: додати',T('p_add',''))}${BOX('Небажане: позбутися',T('p_drop',''))}</div>`,'Застосуй до того самого явища або до своєї громади, організації, міста ці чотири питання з книги.'),
+ SEC('Рішення чи гра в рішення',`<div class="grid2">${BOX('Я справді формував(-ла) рішення',T('dec_real','','Ситуація, де я був(-ла) автором і відповідав(-ла)'))}${BOX('Мене запросили в «гру»',T('dec_game','','Ситуація, де участь була лише для вигляду'))}</div>
+  ${T('dec_feel','Що я відчував(-ла) у другому випадку і що робив(-ла) потім?','У книзі гра в рішення веде до віддалення й відчуження.')}`,'Перекладачі обрали вираз «формувати рішення», щоб показати: рішення хтось готує, і за нього хтось відповідає. Автор застерігає від «гри в рішення», коли участь лише імітують.'),
+ SEC('Естонія і Україна',`<div class="grid2">${BOX('Впізнаю в нас',T('ee_same',''))}${BOX('У нас інакше',T('ee_diff',''))}</div>`,'Перекладачі свідомо не адаптували естонські приклади, бо порівняння — це вже крок до розуміння себе.'),
+ MEET()]},
+{id:'r1',n:'1',t:'Людина',sub:'громадянином не народжуються, а стають',pp:'25–70',toc:[['Загальні поняття',25],['Мораль',46],['Людина як індивід',49],['Особистість, член суспільства і представник культури',50],['Людина як суб’єкт',54],['Ролі та статус',57],['Людина як громадянин',59],['Професіонал',63],['Національна еліта',68]],
+ build:()=>[
+ SEC('Хто може вважати себе громадянином',`<div class="crit">${CRIT.map((c,i)=>`<div class="c"><div>${c}</div>${SEG('cr'+i,c,['це про мене','частково','поки ні'])}</div>`).join('')}</div>
+  <div class="tally" data-tally></div>
+  ${T('cr_near','Який пункт мені найближчий і чому?')}${T('cr_grow','Який пункт хочу розвивати і з чого почну?')}`,'Автор перелічує ознаки людини, яка може вважати себе громадянином (с. 59–60). Це не тест на правильність. Чесно познач, де ти зараз.'),
+ QUOTES([['Свободу супроводжує право вирішувати, а рішення супроводжує зобов’язання брати на себе відповідальність.',51],['Парадокс — правда, що здається брехнею. Демагогія — брехня, що здається правдою.',51],['Закон нічого не робить і ні за що не відповідає.',52],['Щоб бути щасливою у своїй ролі, людина має зробити все можливе, щоб той, хто має протилежну роль, міг бути у своїй ролі.',57],['Почуття обов’язку формується в процесі виховання, почуття відповідальності — в процесі формування самостійних рішень.',60],['Громадянське почуття формується завдяки практиці.',63]]),
+ SEC('Парадокс свободи',`${T('fr_give','Де я віддаю право вирішувати іншим, бо відповідальність здається заважкою?')}${T('fr_take','Що допомогло б мені взяти це право назад?')}`,'Автор пише, що люди прагнуть свободи і водночас її бояться. Якщо відповідальність здається надважкою, людина воліє позбутися права вирішувати й спостерігати збоку (с. 51).'),
+ SEC('Мова, яка ховає відповідальність',`${HIDE.map((h,i)=>`<div class="rw"><q>${h}</q><input type="text" data-k="${P}hd${i}" data-label="${esc('«'+h+'» →')}" value="${esc(S[P+'hd'+i])}" placeholder="Хто саме це зробив або має зробити?" aria-label="Переписати: ${esc(h)}"></div>`).join('')}
+  <p style="font-weight:600;margin:18px 0 6px">Фрази, які я чув(-ла) або сам(-а) казав(-ла)</p>
+  ${LIST('_hd','Мої фрази',[['a','Фраза (новини, робочий чат, збори громади)','in'],['b','Переписую: хто діє й відповідає','in']],'+ Додати фразу')}
+  ${T('hd_own','Що я помітив(-ла) про мову, якою говорять у моєму середовищі?')}`,'«Діє не парламент — діють люди. Завод не працює — працюють робітники» (с. 52). Округлі фрази на кшталт «надійшла пропозиція» ховають того, хто відповідає. Перепиши фрази так, щоб з\'явився автор дії.'),
+ SEC('Мої ролі',`${LIST('_roles','Мої ролі',[['a','Моя роль','in'],['b','Протилежна роль','in'],['c','Що я роблю, щоб інший міг бути у своїй ролі','ta']],'+ Додати роль','three')}
+  ${T('role_stuck','У якій ролі я іноді «застрягаю» і несу її туди, де вона недоречна?','Автор наводить приклад людини, яка залишається вчителем удома, на роботі й серед друзів (с. 58).')}`,'Кожного з нас можна розглядати як сукупність ролей. «Ключ до щастя», за Вооґлайдом: щоб бути щасливою у своїй ролі, треба зробити все можливе, щоб той, хто в протилежній ролі, теж міг бути у своїй (с. 57). Наприклад: батько чи мати й дитина, тренерка й учасники, керівник і команда.'),
+ SEC('Освічений, поінформований, досвідчений',`${RANGE('ed','Освіченість: розумію, про що варто бути поінформованим','мало','досить')}${RANGE('inf','Поінформованість: орієнтуюся в обставинах і процесах','мало','досить')}${RANGE('exp','Досвід: можу передбачити зміни, результати й наслідки','мало','досить')}
+  ${T('oie','Чого мені найбільше бракує, щоб брати участь у рішеннях своєї громади, і де я можу це взяти?')}`,'Автор називає три передумови громадянського суспільства: бути вдосталь освіченим, поінформованим і досвідченим (с. 60). Оціни себе щодо громади, міста чи організації, де хочеш впливати.'),
+ TERMS(),INSIGHT(),MEET()]}
+,{id:'r2',n:'2',t:'Життя',sub:'людина — ціль, а все інше — засоби',pp:'71–120',toc:[['Загальні поняття',71],['Життя і підготовленість до нього',74],['Соціалізація',84],['Ідентитет',88],['Здоров’я',90],['Про психічну рівновагу та когнітивний дисонанс',93],['Розшарування суспільства і стратифікаційний індекс',95],['Функціональна грамотність',97],['Життя й освіченість',99],['Суб’єкт і об’єкт',104],['Діяльність відповідно до курсу і цілей',107],['Системність',114],['Основний процес і надзавдання',120]],
+ build:()=>[
+ SEC('Ціль чи засіб?',`${CASES.map((c,i)=>`<div class="pair"><div class="t">${c}</div>${SEG('cs'+i,c,['людина тут — ціль','людина тут — засіб','важко сказати'])}</div>`).join('')}
+  <p style="font-weight:600;margin:18px 0 6px">Мої ситуації</p>
+  ${LIST('_cs','Мої ситуації',[['a','Ситуація з мого життя, роботи чи громади','ta'],['t','Людина тут','seg',['ціль','засіб','важко сказати']]],'+ Додати ситуацію')}
+  ${T('cs_own','Що спільного в ситуаціях, де ціль і засіб переплутані?')}
+  ${T('cs_me','Де я сам(-а) стаю засобом для чужої цілі? А де, можливо, перетворюю на засіб інших?')}`,'Головна думка розділу: «Якщо ціллю є влада, економіка чи гроші, то люди є засобом. Якщо ціль — це люди та їхнє життя, то влада, економіка і гроші є засобом» (с. 74). Автор попереджає, що коли ціль і засіб переплутані, рано чи пізно приходять апатія, відчуження й агресія. Подивися на ці ситуації.'),
+ QUOTES([['Якщо ціллю є влада, економіка чи гроші, то люди є засобом. Якщо ціль — це люди та їхнє життя, то влада, економіка і гроші є засобом.',74],['Нікого не можна зробити щасливим, але можна влаштувати життя так, щоб люди були щасливі.',73],['Зміна вторинна, збереження натомість первинне, фундаментальне.',73],['Публічність — це величезна сила!',79],['Важливо не те, що дітям кажуть, а те, що вони бачать і відчувають.',85],['Полишена сама на себе, будь-яка система згасає.',87],['Навчити спеціальності легко, але сама спеціальність не може себе застосувати!',88],['Людина без коріння схожа на флюгер.',89],['Якщо людина вибачається, то її слід пробачити, інакше вона почне брехати й недоговорювати.',94],['За допомогою негідних засобів неможливо досягнути чогось гідного.',111],['Надзавдання кожен ставить собі сам.',120]]),
+ SEC('Етапи і переходи',`${LIST('_trans','Мої переходи',[['a','Перехід (з чого — у що)','in'],['b','Що я взяв(-ла) з попереднього етапу','ta'],['c','Що недороблене нагадало про себе пізніше','ta']],'+ Додати перехід','three')}
+  ${SEG('now','Де я зараз',['на етапі','у переході','важко сказати'])}
+  ${T('now_why','Що допомагає мені (або допомогло б) пройти перехід?','У часі переходу людина «не належить ані попередньому, ані новому періоду». Автор називає цей стан маргінальним (с. 75).')}`,'Автор пише, що життя складається з етапів, а найскладніше — переходи між ними. Зроблене на одному етапі знадобиться на наступному, а недоробки нагадають про себе пізніше (с. 74–75). Згадай два-три свої переходи: школа, переїзд, нова робота, батьківство, служба, вихід на пенсію. Пиши лише те, чим готовий(-а) ділитися.'),
+ SEC('Якість життя і те, що варто зберегти',`<p style="font-weight:600;margin:0 0 4px">Наскільки моє життя зараз відповідає…</p>
+  ${QOL.map((q,i)=>`<div class="pair" style="padding-bottom:4px"><div class="t" style="margin:0">…${q}</div>${RANGE('ql'+i,'Якість життя: відповідність '+q,'мало','повністю')}</div>`).join('')}
+  ${T('ql_note','Яка з п\'яти основ найслабша і що з цим можна зробити?')}
+  ${SET('keep','Що я хочу зберегти за будь-яких змін',KEEP.map(k=>[k]))}
+  ${T('keep_own','Що ще я хочу зберегти і як я це оберігаю?')}`,'Автор пропонує оцінювати якість життя за п\'ятьма основами: потреби, стереотипи суспільства, стандарти, ідеали і майбутні можливості. Якщо щось пропустити, оцінка буде поверховою (с. 73). Там само він пише, що збереження первинне, а зміна вторинна.'),
+ SEC('Функціональна грамотність',`<div class="crit">${FL.map((c,i)=>`<div class="c"><div>${c}</div>${SEG('fl'+i,c,['розумію','приблизно','не розумію'])}</div>`).join('')}</div>
+  <div class="tally" data-tally2></div>
+  ${T('fl_first','Що з цього хочу зрозуміти першим? У кого або де можу дізнатися?')}
+  ${T('fl_local','Як у моїй громаді влаштоване навчання для всіх, не лише для дітей?','Автор наводить приклад своєї волості Когіла, де навчаються всі мешканці (с. 98).')}`,'За Вооґлайдом, функціональна грамотність — це здатність розуміти, як влаштовано життя і як функціонує суспільство. Кожен громадянин має мати хоча б загальне уявлення про ці системи (с. 97). Познач, наскільки ти розумієш, як вони працюють у твоєму місті чи країні.'),
+ SEC('Знання, гадка, переконання, віра, мрія',`<details style="margin:0 0 14px"><summary>Визначення з книги (с. 103–104)</summary><p><b>Знання</b> — мисленнєва конструкція, сформована через спостереження, логічні висновки, дослідження й висновки експертів.<br><b>Гадка</b> — тлумачення, погляд, представлений часто непоінформованими людьми. З гадкою миряться за відсутності знань.<br><b>Переконання</b> — уявлення про можливе: знань немає, але немає й підстав вважати інакше.<br><b>Віра</b> — глибоке почуття, впевненість у правильності чи неправильності чогось, незалежно від думок інших.<br><b>Мрія</b> — уявлення про бажане майбутнє на межі можливого і неможливого.</p></details>
+  ${LIST('_kn','Мої твердження',[['a','Моє твердження про людей, громаду чи країну','ta'],['t','Це','seg',['знання','гадка','переконання','віра','мрія']],['b','На чому воно тримається: дослідження, досвід, чужі слова, відчуття…','ta']],'+ Додати твердження')}
+  ${T('kn_note','Що я помітив(-ла), коли розкладав(-ла) свої думки на ці полиці?')}`,'Автор розрізняє ці поняття, бо в суспільстві гадку часто видають за знання. Запиши свої твердження про суспільство, наприклад «молодь не цікавиться політикою» чи «у нас нічого не зміниться», і чесно визнач, що це. Тверджень може бути скільки завгодно.'),
+ SEC('Суб’єкт і об’єкт',`<p style="font-weight:600;margin:0 0 8px">На що спрямована кожна діяльність? Обери об’єкт і перевір себе за книгою.</p>
+  <div class="crit">${SO.map(([a],i)=>`<div class="c"><div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:10px;align-items:center"><b>${a}</b><select data-k="${P}so${i}" data-label="Об’єкт: ${a}" data-so="${i}" aria-label="Об’єкт для: ${a}"><option value="">обери об’єкт…</option>${SOOPT.map(o=>`<option${S[P+'so'+i]===o?' selected':''}>${o}</option>`).join('')}</select></div><div class="src" data-sofb="${i}"></div></div>`).join('')}</div>
+  <div class="grid2" style="margin-top:14px">${BOX('Чим я керую',T('so_proc','','Які процеси я веду і хто їх виконує разом зі мною?'))}${BOX('Ким я управляю і хто управляє мною',T('so_ppl','','Як тримається порядок: на розумінні й повазі чи на примусі?'))}</div>
+  ${T('so_mix','Де я плутаю: намагаюся «управляти» людьми там, де варто налагодити процес? Або навпаки?')}
+  ${T('so_desc','Що в моїй роботі є лише описом, хоча ми називаємо це дослідженням?','Автор наголошує, що досліджувати можна лише проблеми, а опис може тільки передувати дослідженню (с. 107).')}`,'Суб’єкт — активний початок, той, хто діє. Об’єкт — те, на що спрямована його увага. Вооґлайд показує, що в різних видів діяльності різні об’єкти: керують процесами, управляють людьми, господарюють матеріальними цінностями (с. 104–107). І кожна діяльність потребує пари: керування — виконання, управління — підпорядкування.'),
+ SEC('Курс, ціль і рівні цілі',`${T('g_goal','Ціль, з якою я працюю','Особиста, робоча, проєкту чи громади')}
+  <p style="font-weight:600;margin:6px 0 4px">На якому рівні вона сформульована?</p>
+  ${SEG('g_lvl','Рівень цілі',['витрачання, економія чи ухиляння','діяльність заради діяльності','результат','процес','стан'])}
+  <details><summary>Що означають рівні (с. 109–111)</summary>Витрачання як ціль автор називає марнотратством, економію — жадібністю, ухиляння — боягузтвом. «Діяльність як ціль» — коли захід провели, а що з нього вийшло, ніхто не дивиться. Результат має кількість, якість і термін одночасно. Процес — ланцюжок подій, де вихід одного етапу стає входом наступного. Стан — бажаний стан В, до якого ведуть усі процеси.</details>
+  <div class="grid2" style="margin-top:14px">${BOX('Переписую як результат',T('g_res','','Що саме, скільки, якої якості, до коли'))}${BOX('Переписую як стан',T('g_state','','Як буде, коли ціль досягнуто'))}</div>
+  ${T('g_course','Який курс стоїть за цією ціллю?','Курс — доцільний напрямок, якого дотримуються повсякчас (с. 108). Пам\'ятаєш зі вступу: це ще й моральна настанова.')}
+  ${T('g_keep','Що треба зберегти й захистити, перш ніж діяти?','«Перед початком кожної дії слід продумати, що потребує збереження й захисту, а що можна вдосконалити й змінити» (с. 110).')}
+  ${T('g_means','Які засоби в мене є? Чого бракує?','Без засобів ціль, за автором, — лише мрія (с. 108).')}`,'Вооґлайд розрізняє курс, ціль і засоби та описує кілька рівнів цілі. Візьми одну свою ціль і перевір її.'),
+ SEC('Основний процес і надзавдання',`${IN('mp_org','Організація чи спільнота, про яку думаю')}
+  ${T('mp_main','Її основний процес: для чого вона існує?')}
+  ${T('mp_block','Які процеси заважають основному або підміняють його?','Звіти, заходи для галочки, внутрішня боротьба…')}
+  ${T('mp_super','Моє надзавдання','Автор пише, що надзавдання носять у серці й говорити про нього не заведено (с. 120). Це поле тільки для тебе. Якщо передаватимеш файл групі, його можна стерти перед завантаженням.')}`,'«Основним процесом є процес, для досягнення результату якого було створено певну систему». Наприклад, у школі основний процес — розвиток дитини, а не лише навчання (с. 120).'),
+ TERMS(),INSIGHT(),MEET()]}
+,{id:'r3',n:'3',t:'Середовище',sub:'усе, що оточує людину й має для неї цінність і сенс',pp:'121–140',toc:[['Загальні поняття',121],['Життєве середовище в суспільному значенні',123],['Ситуація',125],['Соціальні напруги',131]],
+ build:()=>[
+ SEC('Карта мого середовища',`<div class="grid2">${ENV.map(([a,b],i)=>`<div class="box"><h4>${a}</h4><p class="src" style="margin:4px 0 0">${b}</p>${RANGE('env'+i,a+' середовище: стан','занедбане','доглянуте')}<textarea data-k="${P}envt${i}" data-label="${esc(a)}: що в ньому є для мене" placeholder="Що в ньому є для мене, що його зберігає чи руйнує…" style="min-height:64px">${esc(S[P+'envt'+i])}</textarea></div>`).join('')}</div>
+  ${T('env_miss','Яку частину свого середовища я залишаю без уваги? Чим це може обернутися?','Автор попереджає, що частина, залишена без уваги, згодом потребуватиме компенсації, яка може дорого коштувати (с. 124).')}`,'Середовище, за Вооґлайдом, — це все, що оточує людину й має для неї цінність і сенс. Довкілля — лише одна з його частин (с. 121–122). Оціни кожну частину свого середовища і запиши, що в ній є для тебе.'),
+ QUOTES([['Середовище — це все, що оточує людину, має для неї цінність і сенс.',121],['Оберігаючи природу, людина насправді оберігає саму себе.',122],['Охороняти середовище за допомогою лише адміністративних заходів фактично неможливо.',123],['Межею використання природи є її здатність до самовідновлення.',124],['Середовище — це єдність обставин, становища і ситуації.',126],['Громадянин має бачити і розрізняти, коли люди займаються справою, а коли — вдаванням діяльності, коли проводять нараду, а коли — грають у нараду.',128],['Рішення можливе лише в ситуації вибору.',129],['Стабільна ситуація — це не стагнація; вона означає, що зміни, які відбуваються, усім зрозумілі.',130],['Часткове інформування (приховування цілісної картини) — це обман.',132],['Одним із джерел сили у соціальних зв’язках є альтернативи. Ті, у кого альтернативи відсутні, практично безсилі.',134],['Розділені радість і щастя будуть значно більшими, розділені горе і печаль — значно меншими.',138]]),
+ SEC('Електронне середовище',`<div class="crit">${DIG.map((c,i)=>`<div class="c"><div>${c}</div>${SEG('dg'+i,c,['часто','іноді','рідко'])}</div>`).join('')}</div>
+  ${T('dg_agree','З чим в оцінці автора я згоден(-на), а з чим ні?','Автор досить критичний до смартфонів. Як це виглядає з твого досвіду: молоді, батьків, освітян?')}
+  ${T('dg_rule','Одне моє правило для життя в електронному середовищі')}`,'Автор пише, що електронне середовище змінило спілкування до невпізнання і що воно потребує особливої уваги. Сповіщення не дають зосередитися, а надмір інформації створює оманливе відчуття поінформованості (с. 124–125). Подивися, як це в тебе.'),
+ SEC('Ситуації, в яких я буваю',`${LIST('_sit','Мої ситуації',[['a','Де або з ким (робота, громада, родина, група…)','in'],['t1','Справа чи вдавання','seg',['істинна','ігрова']],['t2','Чи бачу вихід','seg',['проблемна','абсурдна']],['t3','Свобода','seg',['ситуація вибору','ситуація примусу']],['t4','Передбачуваність','seg',['стабільна','лабільна']],['t5','Напруга','seg',['спокійна','екстремальна']],['t6','Стосунки','seg',['дружня','конфліктна']]],'+ Додати ситуацію')}
+  <details style="margin:0 0 10px"><summary>Що означають ці ситуації (с. 127–130)</summary><p><b>Істинна</b> — від результату багато що залежить, усе всерйоз. <b>Ігрова</b> — люди думають одне, кажуть інше, а роблять третє, щоб справити враження. <b>Проблемна</b> — є труднощі, але віриш, що знайдеш рішення. <b>Абсурдна</b> — здається, що виходу немає і що б ти не робив(-ла), стане гірше. <b>Вибору</b> — є альтернативи і свобода говорити. <b>Примусу</b> — треба робити лише наказане. <b>Стабільна</b> — зміни всім зрозумілі, можна планувати. <b>Лабільна</b> — нервове очікування, довгих планів не будують.</p></details>
+  ${T('sit_back','Як допомогти людині (або собі) повернутися з абсурдної ситуації в проблемну?','Автор радить відновити віру в себе, відчуття перспективи й довірливі стосунки, а потім допомогти побачити й сформулювати проблему та її причини (с. 129).')}`,'У кожен момент ми перебуваємо в певній ситуації. Від того, наскільки точно ми її бачимо, залежить, чи поведемося доречно (с. 125–130). Опиши кілька середовищ, де ти буваєш, і познач, яка там ситуація.'),
+ SEC('Чи була це ситуація вибору?',`${IN('ch_case','Рішення, збори чи обговорення, яке я згадую')}
+  ${SET('choice','Умови ситуації вибору, які були',CHOICE.map(c=>[c]))}
+  <div class="verdict" data-cverdict></div>
+  ${T('ch_next','Що можна змінити, щоб наступного разу це була справжня ситуація вибору?')}`,'«Рішення можливе лише в ситуації вибору» (с. 129). Автор називає умови, за яких людина почувається в ситуації вибору. Згадай нещодавнє рішення чи обговорення й перевір.'),
+ SEC('Чому люди віддаляються',`${IN('ds_org','Спільнота чи організація, про яку думаю')}
+  <div class="crit">${DIST.map((c,i)=>`<div class="c"><div>${c}</div>${SEG('ds'+i,c,['так','частково','ні'])}</div>`).join('')}</div>
+  <div class="tally" data-tallyopts="так|частково|ні"></div>
+  ${T('ds_first','Що варто змінити першим, щоб люди не віддалялися?')}
+  ${T('ds_new','Як у нас зустрічають новеньких?','Автор радить представляти новачку колег (а не навпаки) і влаштувати неформальну зустріч, щоб людина швидше відчула себе своєю (с. 139).')}`,'Віддалення — це коли люди відходять від роботи, навчання, громади, перестають приходити на збори. Автор пропонує запитання, які допомагають зрозуміти, чому так стається (с. 132–134). Застосуй їх до своєї команди, громади, молодіжної ради чи групи.'),
+ SEC('Соціальні напруги',`${SET('tens','Напруги, які я бачу у своєму середовищі',TENS.map(([a,b])=>[a,'<b>'+a+'</b> — '+b]))}
+  ${T('tn_which','Яку напругу я бачу найчіткіше? Що, на мою думку, її викликає?')}
+  ${T('tn_balance','Яка протилежна сила чи процес могли б її врівноважити?','Автор пише, що кожна сила має бути врівноважена протилежною силою, а прямо усунути напругу не можна, лише її причини (с. 131).')}`,'Автор описує соціальні напруги, які в житті проявляються разом і підсилюють одна одну (с. 131–139). Подумай про свою громаду, організацію чи країну, не обов\'язково про себе.'),
+ TERMS(),INSIGHT(),MEET()]}
+];
+const REST=[['4','Суспільство','141–180',[['Загальні поняття',141],['Мобільність людини',150],['Захищеність людей',153],['Держава',155],['Народ',167],['Політика',177]]],
+['5','Культура','181–196',[['Загальні поняття',181],['Звичаї, обряди й традиції',182],['Культура і виховання',185],['Культура й суспільство',189]]],
+['6','Спілкування','197–214',[['Загальні поняття',197],['Спілкування і взаємодія',203],['Прямий і зворотний зв’язок',207],['Мова',212]]],
+['7','Система діяльності','215–228',[['Загальні поняття',215],['Дії',215],['Рівні регуляції',219],['Моделі професіонала',222],['Моделювання діяльності',226]]],
+['8','Система пізнання','229–246',[['Загальні поняття',229],['Шляхи пізнання',230],['Наукове пізнання',232],['Методологія і методика',243]]],
+['9','Освіта','247–284',[['Загальні поняття',247],['Навчання',252],['Освіта громадянина',267],['Компетентність',273],['Про політику в галузі освіти',278],['Набір золотих правил',281]]],
+['10','Робота','285–304',[['Загальні поняття',285],['Робота як явище і процес',288],['Організація праці',293],['Трудова підготовка',299],['Робітник',302]]],
+['11','Керування','305–366',[['Загальні поняття',305],['Суб’єкт і об’єкт керування',310],['Формування рішень',332],['Інноваційний процес',345],['Деякі методи пошуку',357]]],
+['12','Співпраця','367–388',[['Загальні поняття',367],['Передумови співпраці',368],['Конкуренція чи співпраця?',371],['Перешкоди для співпраці',374]]],
+['13','Тривоги','389–410',[['Загальні положення',389],['Бідність',392],['Народжуваність',403],['Страх',406],['Зміни можливі!',409]]]];
+REST.forEach(([n,t,pp,toc])=>CH.push({id:'r'+n,n,t,pp,toc,generic:1,build:()=>[QUOTES(),TERMS(),INSIGHT(),MEET()]}));
+CH.push({id:'vysnovky',n:'✦',t:'Висновки',sub:'повернення до точки входу',pp:'411–418',toc:[],build:()=>[
+ SEC('Повернення до точки входу',`<div class="box" style="margin-bottom:8px"><h4>На початку я писав(-ла)</h4><p data-back style="margin:6px 0 0;white-space:pre-wrap"></p></div>
+  ${T('cit_def2','Громадянин тепер, на мою думку, це людина, яка…')}
+  ${RANGE('scale2','Шкала мешканець → громадянин наприкінці (1–10)','мешканець','громадянин')}
+  ${T('change','Що змінилося в моєму мисленні за час читання?')}`,'Порівняй свої відповіді з першої вкладки з тим, як думаєш тепер.'),
+ QUOTES(),
+ SEC('Що я забираю з книги',`${T('keep','Три думки, які залишаться зі мною')}${T('act','Що я робитиму інакше як громадянин(-ка)')}${T('gift','Кому я порадив(-ла) б цю книгу і чому')}`),
+ MEET()]});
+
+const ENV=[['Природне','рослини, тварини, повітря, вода, клімат'],['Фізичне','люди поруч як фізичні особи'],['Штучне','усе створене руками людини: дім, місто, речі'],['Духовне','цінності, норми, міфи, табу, ідеали'],['Психічне','ситуація: обставини, становище, стереотипи'],['Соціальне','людські стосунки, їхні передумови й наслідки'],['Віртуальне','усне, предметне (книги, знаки) й електронне спілкування']];
+const DIG=['Відволікаюся на сповіщення, коли зосереджено працюю чи читаю','Маю відчуття, що все знаю, бо завжди можу знайти в мережі','Дочитую довгі тексти до кінця','Перевіряю, звідки інформація і чи вона повна','Про важливе розмовляю наживо, а не лише в месенджерах'];
+const CHOICE=['була альтернатива: дві-три більш-менш рівноцінні можливості','я почувався(-лася) досить вільно, щоб думати й говорити те, що вважаю правильним','я був(-ла) певен(-на), що ніхто не гнобитиме мене чи близьких за мою думку','можна було додати свою альтернативу','питання було важливим, і помилка могла бути небезпечною'];
+const DIST=['Люди достатньо поінформовані, а канали дають цілісну картину','Люди розуміють, що відбувається: тексти, рішення, принципи, обмеження','Кожен може брати участь в обговоренні, нікого не принижують і не заганяють у кут','Люди беруть участь у формуванні рішень, і їхні аргументи враховують','Захист забезпечено: ніхто не може безкарно завдати болю, залякати чи поширювати чутки','Є вибір у простих речах: що вдягти, де сісти, з ким бути','Цілі гідні й зрозумілі','Засоби доцільні й гідні','Діють принципи: персональна відповідальність, етичність, прямий і зворотний зв’язок, гуманність, компетентність'];
+const TENS=[['відчуження','результат власної діяльності обертається проти людини'],['віддалення','люди відходять, відсторонюються, перестають брати участь'],['ескапізм','втеча: в інше місце, у минуле, в замінні дії'],['аномія','відчуття, що норм немає або їх ніхто не дотримується'],['конфлікт ролей','стосунки з тими, хто в протилежній ролі, зіпсовані'],['конформізм','люди не наважуються бути самостійними й копіюють інших'],['індолентність','бажане недоступне, і людина переконує себе, що й не хотіла'],['самотність','немає з ким обговорити й утілити щось серйозне'],['депривація','ті, до кого людина належала, відвернулися чи зникли'],['маргінальність','людина вже не та, що була, але ще не стала кимось іншим'],['фрустрація','завдань забагато, вони заскладні чи неприємні'],['дисидентство','середовище принципово неприйнятне, вихід бачиться лише в кардинальних змінах']];
+const SO=[['Керування','процес','у єдності з виконанням'],['Управління','людина','у єдності з підпорядкуванням'],['Господарювання','матеріальні цінності','у єдності з обслуговуванням'],['Володіння','нематеріальні цінності (знання, мови, права)','у єдності з використанням'],['Формування зв’язків','система','у єдності зі співпрацею'],['Оцінка','якісні характеристики систем','міцність, швидкість, точність, новизна'],['Дослідження','проблеми','протиріччя між наявним і бажаним станом'],['Навчання','тексти','писемні, усні, відео чи аудіо']];
+const SOOPT=['тексти','людина','проблеми','матеріальні цінності','процес','якісні характеристики систем','система','нематеріальні цінності (знання, мови, права)'];
+const CASES=['Школа оцінює свою роботу передусім за рейтингом результатів тестування.','Громада перед облаштуванням скверу питає мешканців, що їм там потрібно.','Молодіжний центр звітує кількістю проведених заходів.','Компанія виконує план продажів, хоча команда вигорає.','Дорогу ремонтують тоді, коли наближаються вибори.','Волонтери спершу з\'ясовують, що потрібно людям, а потім збирають кошти.'];
+const QOL=['моїм потребам і очікуванням','стереотипам мого суспільства й культури','усталеним стандартам','моїм ідеалам','можливостям і потребам, що з\'являться в майбутньому'];
+const KEEP=['здоров\'я','життя','честь','гідність','чистоту','порядок','рідну мову','культурні цінності','свободу','стосунки з іншими людьми'];
+const FL=['фінанси (бюджет громади, податки)','енергетика','водопостачання','житлово-комунальне господарство','зв\'язок','поліція','нотаріат','суд','політика й політичні партії','демагогія: як розпізнати'];
+const PAIRS=[['дані','інформація',''],['курс','мета','«Курс» тут — переклад естонського siht («просіка», «доцільний напрямок»). Це не просто шлях, а моральна настанова, прагнення, що спрямовує діяльність (с. 11).'],['ухвалення самостійних рішень','прийняття чужих рішень до виконання','Звідси вираз «формувати рішення»: хто автор рішення, той і відповідає за нього (с. 11).'],['знання','гадка','«Якщо немає досліджень, знанням вважають гадку» (с. 24).'],['результат','наслідок','Результат — те, що закладаємо в рішення і плануємо отримати. Наслідок — непередбачені ефекти, що супроводжують дію (с. 11).'],['керування','управління','Керувати можна процесами, а управляти — людьми (с. 12).'],['системність','комплексність',''],['мотив, мотивація','мотивування','']];
+const VPS=['Як бачу я','Як бачать ті, хто вирішує','Як бачать ті, кого це зачіпає найбільше','Як бачить людина ззовні','Як це побачать через 10 років'];
+const PYR=`<div class="pyr" aria-label="Піраміда з п'яти точок зору">${[['<rect x="10" y="10" width="60" height="60"/><path d="M10 10L70 70M70 10L10 70"/>','згори'],['<path d="M40 10L72 70H8Z"/>','збоку'],['<rect x="10" y="10" width="60" height="60"/>','знизу'],['<path d="M30 10L72 70H8Z"/><path d="M30 10L48 70"/>','під кутом'],['<path d="M52 10L72 64L40 74L8 62Z"/><path d="M52 10L40 74"/>','інакше']].map(([d,c])=>`<figure><svg viewBox="0 0 80 80" fill="none" stroke-width="2">${d}</svg><figcaption>${c}</figcaption></figure>`).join('')}</div>`;
+const CRIT=['знаю, що і як робиться або залишається незробленим','хочу знати, чому щось роблять чи не роблять і що від цього залежить','дбаю про зв’язок між правами, обов’язками і відповідальністю','не боюся брати участь в обговореннях, формуванні рішень і контролі за їх виконанням','умію бути послідовно вимогливим(-ою) до себе та інших','навчаюся протягом усього життя','готовий(-а) висувати себе в депутати, чиновники чи радники лише тоді, коли маю відповідну підготовку','орієнтуюся в системах, потрібних для суспільного життя (фінанси, комунікації, транспорт…)','умію розглядати діяльність як сукупність проблем','вмію аналізувати, узагальнювати, бачити зв’язки й залежності, класифікувати','вимагаю публічності та публічного обґрунтування рішень','зневажаю приховування, обман і примус','не беру участі в процедурах, що суперечать Конституції чи добрим традиціям','роблю все можливе для захисту й зміцнення конституційного ладу'];
+const HIDE=['Було ухвалено рішення закрити центр.','Надійшла пропозиція перенести збори.','Місто не дбає про парки.','Школа вирішила скасувати гурток.'];
+
+/* ---------- рендер ---------- */
+$('#name').value=S.name||'';
+$('#tabs').innerHTML=CH.map(c=>`<a href="#${c.id}" data-tab="${c.id}"><b>${c.n}</b>${c.t}<i><s style="width:0"></s></i></a>`).join('');
+function render(c){P=c.id==='r0'?'c0_':c.id==='vysnovky'?'cv_':'c'+c.n+'_';c.P=P;
+ const secs=c.build();
+ return `<div class="band chead"><div class="wrap"><h2>${c.n!=='✦'?'Розділ '+c.n+'. ':''}${c.t}</h2>
+  <div class="meta"><span>с. ${c.pp}</span>${c.sub?`<span>${c.sub}</span>`:''}<span class="meter"><i data-meter></i></span><span data-pct>0%</span></div>
+  ${c.toc.length?`<ul class="toc">${c.toc.map(([a,p])=>`<li>${a} <span>${p}</span></li>`).join('')}</ul>`:''}
+  ${c.generic?'<p class="note">Тут уже можна записувати цитати, поняття й думки. Окремі вправи до цього розділу додамо ближче до зустрічі, і записане нікуди не зникне.</p>':''}
+ </div></div>`+secs.map((s,i)=>`<section class="band step" data-title="${esc((i+1)+'. '+s.t)}"><div class="wrap"><h3 class="h"><b>${i+1}</b>${s.t}</h3>${s.lead?`<p class="lead">${s.lead}</p>`:''}${s.inner}</div></section>`).join('')}
+$('#panels').innerHTML=CH.map(c=>`<div class="panel" id="p-${c.id}" hidden>${render(c)}</div>`).join('');
+const fieldsOf=c=>JSON.parse(c);
+function drawList(w){const k=w.dataset.listwrap,f=fieldsOf(w.dataset.fields),lay=w.dataset.lay;let rows=S[k];if(!rows||!rows.length)rows=[{}];
+ w.innerHTML=rows.map((r,i)=>{const cell=([n,l,t,o])=>t==='seg'?`<div><div style="font-size:14px;font-weight:600;margin-bottom:4px">${l}</div><div class="seg">${o.map(v=>`<label><input type="radio" name="${k}__${i}__${n}" value="${esc(v)}" data-list="${k}" data-i="${i}" data-f="${n}"${r[n]===v?' checked':''}><span>${v}</span></label>`).join('')}</div></div>`:`<label>${l}${t==='ta'?`<textarea data-list="${k}" data-i="${i}" data-f="${n}">${esc(r[n])}</textarea>`:`<input type="text" data-list="${k}" data-i="${i}" data-f="${n}" value="${esc(r[n])}">`}</label>`;
+  return `<div class="row">${lay==='quote'?`<div class="two">${cell(f[0])}${cell(f[1])}</div>${cell(f[2])}`:lay==='three'?`<div class="three">${f.map(cell).join('')}</div>`:f.map(cell).join('')}${rows.length>1||Object.values(r).some(v=>v)?`<button type="button" class="del" data-del="${k}" data-i="${i}">Видалити</button>`:''}</div>`}).join('')+`<button type="button" class="add" data-addrow="${k}">${w.dataset.addtxt}</button>`;
+ markSugg()}
+document.querySelectorAll('[data-listwrap]').forEach(drawList);
+function markSugg(){document.querySelectorAll('.sg').forEach(sg=>{const k=sg.closest('.panel').querySelector('[data-listwrap$="__quotes"]').dataset.listwrap;sg.classList.toggle('used',(S[k]||[]).some(r=>r.t===sg.dataset.q))})}
+
+/* ---------- живі підказки й прогрес ---------- */
+function live(){
+ document.querySelectorAll('[data-verdict]').forEach(v=>{const pre=[...v.parentNode.querySelectorAll('[data-set$="pre"] input')];const miss=pre.filter(c=>!c.checked).map(c=>c.value);
+  v.textContent=!miss.length?'Усі три передумови є. Це вже проблема у розумінні Вооґлайда, а не скарга: можна шукати причини.':miss.length===3?'Познач, які передумови в тебе вже є.':'Бракує: '+miss.join(', ')+'. Поки що це радше відчуття незадоволення, ніж проблема. Що допоможе його доповнити?'});
+ document.querySelectorAll('[data-tally]').forEach(t=>{const p=t.closest('.panel');const cnt={};p.querySelectorAll('.crit input:checked').forEach(r=>cnt[r.value]=(cnt[r.value]||0)+1);t.innerHTML=['це про мене','частково','поки ні'].map(v=>`<span><b>${cnt[v]||0}</b>${v}</span>`).join('')});
+ document.querySelectorAll('[data-sofb]').forEach(f=>{const i=+f.dataset.sofb,sel=f.parentNode.querySelector('select'),[a,o,u]=SO[i];f.textContent=!sel.value?'':sel.value===o?'✓ Так, у книзі теж. '+a+' — '+u+'.':'У книзі об’єкт інший: '+o+'. Подумай, чому.'});
+ document.querySelectorAll('[data-tallyopts]').forEach(t=>{const o=t.dataset.tallyopts.split('|');const cnt={};t.parentNode.querySelectorAll('.crit input:checked').forEach(r=>cnt[r.value]=(cnt[r.value]||0)+1);t.innerHTML=o.map(v=>`<span><b>${cnt[v]||0}</b>${v}</span>`).join('')});
+ document.querySelectorAll('[data-cverdict]').forEach(v=>{const n=v.parentNode.querySelectorAll('[data-set$="choice"] input:checked').length;v.textContent=n===5?'Усі п’ять умов були. Це справжня ситуація вибору: тут формуються відповідальність і активність.':n===0?'Познач умови, які справді були.':'Умов: '+n+' з 5. Це радше ситуація з обмеженим вибором. Подумай, яких умов бракувало і чому.'});
+ document.querySelectorAll('[data-tally2]').forEach(t=>{const cnt={};t.parentNode.querySelectorAll('.crit input:checked').forEach(r=>cnt[r.value]=(cnt[r.value]||0)+1);t.innerHTML=['розумію','приблизно','не розумію'].map(v=>`<span><b>${cnt[v]||0}</b>${v}</span>`).join('')});
+ document.querySelectorAll('input[type=range]').forEach(r=>r.nextElementSibling.nextElementSibling.textContent=S[r.dataset.k]?r.value:'–');
+ const back=$('[data-back]');if(back)back.textContent=(S.c0_cit_def||'—')+(S.c0_scale?'\nНа шкалі: '+S.c0_scale+' з 10':'');
+ CH.forEach(c=>{const p=$('#p-'+c.id);const t=[...p.querySelectorAll('textarea')];const d=t.filter(x=>x.value.trim()).length;const pct=t.length?Math.round(d/t.length*100):0;
+  p.querySelector('[data-meter]').style.width=pct+'%';p.querySelector('[data-pct]').textContent=pct+'%';$(`[data-tab="${c.id}"] s`).style.width=pct+'%'})}
+
+let tm;function save(){live();clearTimeout(tm);tm=setTimeout(()=>{try{localStorage.setItem(KEY,JSON.stringify(S));$('#saved').textContent='Збережено о '+new Date().toLocaleTimeString('uk-UA',{hour:'2-digit',minute:'2-digit'})}catch(e){$('#saved').textContent='Браузер не дає зберігати. Завантаж зошит перед виходом.'}},400)}
+document.addEventListener('input',e=>{const el=e.target;
+ if(el.id==='name')S.name=el.value;
+ else if(el.dataset.list){const a=S[el.dataset.list]=S[el.dataset.list]||[{}];while(a.length<=el.dataset.i)a.push({});a[el.dataset.i][el.dataset.f]=el.value}
+ else if(el.dataset.k)S[el.dataset.k]=el.value;
+ else if(el.type==='radio')S[el.name]=el.value;
+ else if(el.type==='checkbox'){const s=el.closest('[data-set]');if(s)S[s.dataset.set]=[...s.querySelectorAll('input:checked')].map(c=>c.value)}
+ save()});
+document.addEventListener('change',e=>{if(e.target.type==='radio'||e.target.type==='checkbox')e.target.dispatchEvent(new Event('input',{bubbles:true}))});
+document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+ if(b.dataset.addrow){const k=b.dataset.addrow;S[k]=S[k]&&S[k].length?S[k]:[{}];S[k].push({});const w=$(`[data-listwrap="${k}"]`);drawList(w);const ins=w.querySelectorAll('.row');ins[ins.length-1].querySelector('textarea,input').focus();save()}
+ else if(b.dataset.del){const k=b.dataset.del;S[k].splice(+b.dataset.i,1);drawList($(`[data-listwrap="${k}"]`));save()}
+ else if(b.dataset.addq){const w=b.closest('.panel').querySelector('[data-listwrap$="__quotes"]');const k=w.dataset.listwrap;const a=S[k]=(S[k]||[]).filter(r=>Object.values(r).some(v=>v));if(a.some(r=>r.t===b.dataset.addq)){toast('Ця цитата вже у твоєму списку');return}a.push({t:b.dataset.addq,p:b.dataset.p});drawList(w);save();toast('Додано до моїх цитат. Допиши, що ти про це думаєш.')}});
+
+/* ---------- вкладки ---------- */
+let cur;
+function show(){const id=(location.hash||'').slice(1);const c=CH.find(x=>x.id===id)||CH[0];cur=c;
+ CH.forEach(x=>{$('#p-'+x.id).hidden=x!==c;const a=$(`[data-tab="${x.id}"]`);if(x===c)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+ $(`[data-tab="${c.id}"]`).scrollIntoView({block:'nearest',inline:'center'});document.title='Мислити як громадянин · '+c.t}
+window.addEventListener('hashchange',()=>{show();window.scrollTo(0,0)});
+show();live();if(S._migrated)save();
+
+/* ---------- експорт ---------- */
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),3200)}
+function chBlocks(c){const p=$('#p-'+c.id);const out=[];
+ p.querySelectorAll('section.step').forEach(sec=>{const it=[];
+  sec.querySelectorAll('textarea[data-k],input[type=text][data-k],select[data-k],input[type=range],[data-seg],[data-set],[data-listwrap]').forEach(el=>{
+   if(el.dataset.listwrap){const f=fieldsOf(el.dataset.fields);(S[el.dataset.listwrap]||[]).filter(r=>Object.values(r).some(v=>v&&v.trim())).forEach((r,i)=>{
+     if(el.dataset.lay==='quote')it.push(['Цитата '+(i+1)+(r.p?' (с. '+r.p+')':''),(r.t?'«'+r.t+'»':'')+(r.n?'\n→ '+r.n:'')]);
+     else it.push([r.a||f[0][1],f.slice(1).map(([n,l])=>r[n]?((f.length>2||f[1][2]==='seg')?l+': ':'')+r[n]:'').filter(Boolean).join('\n')])});return}
+   if(el.dataset.seg){if(S[el.dataset.seg])it.push([el.dataset.label,S[el.dataset.seg]]);return}
+   if(el.dataset.set){const v=S[el.dataset.set];if(v&&v.length)it.push([el.dataset.label,v.join('; ')]);return}
+   const k=el.dataset.k;if(/vpl\d$/.test(k))return;
+   if(/vp\d$/.test(k)){const i=k.slice(-1);if(S[k]&&S[k].trim())it.push([S[c.P+'vpl'+i]||VPS[i],S[k]]);return}
+   if(el.type==='range'){if(S[k])it.push([el.dataset.label,S[k]+' з 10']);return}
+   if(S[k]&&String(S[k]).trim())it.push([el.dataset.label||'Відповідь',S[k]])});
+  if(it.length)out.push([sec.dataset.title,it])});return out}
+const chTitle=c=>(c.n!=='✦'?'Розділ '+c.n+'. ':'')+c.t;
+function asHtml(list){const name=S.name||'';const body=list.map(c=>[c,chBlocks(c)]).filter(([,b])=>b.length).map(([c,b])=>'<h1>'+esc(chTitle(c))+' <small>с. '+c.pp+'</small></h1>'+b.map(([t,it])=>'<h2>'+esc(t)+'</h2><dl>'+it.map(([l,v])=>'<dt>'+esc(l)+'</dt><dd>'+esc(v)+'</dd>').join('')+'</dl>').join('')).join('');
+ const data=list.length===1?Object.fromEntries(Object.entries(S).filter(([k])=>k.startsWith(list[0].P)||k==='name')):S;
+ return '<!DOCTYPE html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Мислити як громадянин'+(name?' · '+esc(name):'')+'</title><style>body{font:16px/1.6 Raleway,Arial,sans-serif;color:#17302f;max-width:760px;margin:40px auto;padding:0 20px}h1{font-family:"Exo 2",Arial,sans-serif;color:#007f7c;font-size:28px;margin-top:48px;border-bottom:3px solid #f18602;padding-bottom:6px}h1 small{font-size:15px;color:#587170}h2{font-family:"Exo 2",Arial,sans-serif;color:#fff;background:#02b9b5;padding:6px 12px;border-radius:8px;font-size:19px;margin-top:28px}dt{font-weight:700;margin-top:14px}dd{margin:4px 0 0;white-space:pre-wrap;border-left:3px solid #f18602;padding-left:12px}.m{color:#587170}@media print{h2{-webkit-print-color-adjust:exact;print-color-adjust:exact}h1{break-before:page}h1:first-of-type{break-before:auto}}.tb{position:sticky;top:0;background:#e9f8f8;border:1.5px solid #02b9b5;border-radius:12px;padding:10px 14px;margin-bottom:24px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;font-size:14px}.tb button{font:600 15px Raleway,Arial,sans-serif;background:#f18602;color:#fff;border:0;border-radius:20px;padding:10px 18px;cursor:pointer}@media print{.tb{display:none}}</style></head><body><div class="tb"><button onclick="window.print()">Зберегти як PDF</button><span>Натисни кнопку і в полі «Принтер» обери «Зберегти як PDF». Або натисни Ctrl+P (на Mac — Cmd+P).</span></div><p class="m">Юло Вооґлайд, «Мислити як громадянин» · зошит'+(name?' · '+esc(name):'')+' · '+new Date().toLocaleDateString('uk-UA')+'</p>'+(body||'<p>Поки що порожньо.</p>')+'<p class="m" style="margin-top:40px">learnlab.digital · лабораторія досвіду</p><script type="application/json" id="zoshyt-data">'+JSON.stringify(data).replace(/</g,'\\u003c')+'<\/script></body></html>'}
+function asMd(c){return '# '+chTitle(c)+' (с. '+c.pp+')\n'+(S.name?S.name+'\n':'')+'\n'+chBlocks(c).map(([t,it])=>'## '+t+'\n\n'+it.map(([l,v])=>'**'+l+'**\n'+v+'\n').join('\n')).join('\n')}
+const fn=(x,ext)=>'Вооґлайд_'+x+(S.name?'_'+S.name.trim().replace(/\s+/g,'_'):'')+'.'+ext;
+let dl=null;
+window.claude&&claude.use('downloads').then(n=>{dl=n;if(n)$('#dlMenu').hidden=false}).catch(()=>{});
+async function doSave(name,data){$('#dlMenu').classList.remove('on');try{await dl.save({filename:name,data});toast('Файл збережено')}catch(e){if(e&&e.code==='declined')return;toast(e&&e.code==='rate_limited'?'Зачекай мить і спробуй ще раз':'Завантажити не вдалося. Скористайся кнопкою «Скопіювати розділ».')}}
+$('#moreBtn').onclick=()=>{const m=$('#more');m.classList.toggle('on');$('#moreBtn').setAttribute('aria-expanded',m.classList.contains('on'))};
+$('#dlBtn').onclick=()=>{const m=$('#dlMenu');m.classList.toggle('on');$('#dlBtn').setAttribute('aria-expanded',m.classList.contains('on'))};
+$('#dlCh').onclick=()=>doSave(fn(cur.n==='✦'?'Висновки':'розділ_'+cur.n,'html'),asHtml([cur]));
+$('#dlAll').onclick=()=>doSave(fn('зошит','html'),asHtml(CH));
+$('#dlMd').onclick=()=>doSave(fn(cur.n==='✦'?'Висновки':'розділ_'+cur.n,'md'),asMd(cur));
+$('#copy').onclick=async()=>{$('#more').classList.remove('on');try{await navigator.clipboard.writeText(asMd(cur));toast('Скопійовано. Встав у документ або повідомлення.')}catch(e){toast('Браузер не дав скопіювати')}};
+$('#openFile').onclick=()=>{$('#more').classList.remove('on');$('#file').click()};
+$('#file').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const txt=await f.text();let d;
+ if(/\.json$/i.test(f.name))d=JSON.parse(txt);else{const m=txt.match(/<script type="application\/json" id="(?:zoshyt|arkush)-data">([\s\S]*?)<\/script>/);if(!m)throw 0;d=JSON.parse(m[1])}
+ if(!Object.keys(d).some(k=>/^c(\d+|v)_|^name$/.test(k))){const o={};Object.entries(d).forEach(([k,v])=>{if(k==='name')o.name=v;else if(k==='quotes')o.c0__quotes=v.map(t=>({t}));else if(k==='q_own'){if(v)(o.c0__quotes=o.c0__quotes||[]).push({t:v})}else if(k!=='date')o['c0_'+k]=v});d=o}
+ Object.assign(S,d);try{localStorage.setItem(KEY,JSON.stringify(S))}catch(_){}location.reload()}catch(err){toast('Цей файл не підходить. Обери завантажений раніше зошит або розділ (.html).')}e.target.value=''};
+$('#clear').onclick=()=>{$('#more').classList.remove('on');$('#dlg').classList.add('on')};
+$('#no').onclick=()=>$('#dlg').classList.remove('on');
+$('#yes').onclick=()=>{Object.keys(S).forEach(k=>{if(k.startsWith(cur.P))delete S[k]});try{localStorage.setItem(KEY,JSON.stringify(S))}catch(_){}location.reload()};
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('#dlg').classList.remove('on');$('#dlMenu').classList.remove('on');$('#more').classList.remove('on')}});
+document.addEventListener('click',e=>{if(!e.target.closest('.menu'))document.querySelectorAll('.menu.on').forEach(m=>m.classList.remove('on'))});
+$('#bird').onclick=()=>toast('Пташка підказує: перш ніж судити про ціле, обійди піраміду ще раз.');
+}
+</script>
+</body>
+</html>
